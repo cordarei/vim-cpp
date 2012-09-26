@@ -76,17 +76,24 @@ function! GoogleCppIndent()
     return l:orig_indent
 endfunction
 
-setlocal shiftwidth=2
-setlocal tabstop=2
-setlocal softtabstop=2
+setlocal shiftwidth=4
+setlocal tabstop=4
+setlocal softtabstop=4
 setlocal expandtab
 setlocal textwidth=80
-setlocal wrap
 
 setlocal cindent
-setlocal cinoptions=h1,l1,g1,t0,i4,+4,(0,w1,W4
+setlocal cinoptions=
+setlocal cinoptions+=l1 "align with case labels
+setlocal cinoptions+=g.5s "visibility keyword indent
+setlocal cinoptions+=h.5s "indent after visibility keyword
+setlocal cinoptions+=t0 "don't indent function return type
+setlocal cinoptions+=i2s "base class decl & initializer list indent
+setlocal cinoptions+=+2s "continuation line indent
+setlocal cinoptions+=(0 "line up following unclosed paren
+setlocal cinoptions+=w1 "hanging indent for boolean operators starting new line
+setlocal cinoptions+=W2s "don't line up function args if start on new line
 
 setlocal indentexpr=GoogleCppIndent()
 
 let b:undo_indent = "setl sw< ts< sts< et< tw< wrap< cin< cino< inde<"
-
